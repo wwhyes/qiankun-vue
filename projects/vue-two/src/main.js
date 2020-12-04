@@ -12,8 +12,7 @@ let instance = null
 function render (props = {}) {
   const { container } = props
   router = new VueRouter({
-    mode: 'history',
-    base: window.__POWERED_BY_QIANKUN__ ? '/two' : '/',
+    mode: window.__POWERED_BY_QIANKUN__ ? 'hash' : 'history',
     routes
   })
 
