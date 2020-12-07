@@ -28,47 +28,39 @@ const appsRoutes = apps.map(app => {
 const appsMixin = {
   data () {
     return {
-      props: {},
-      activeApp: '',
-      microApps: apps.map(item => item.name),
+      microApps: apps,
+      microAppsProps: {},
       loadedMicroApps: {}
     }
   },
   methods: {
-    loadMicroApp (appName) {
+    loadMicroApp (appName, lastAppName) {
       const {
-        props,
-        activeApp,
         microApps,
+        microAppsProps,
         loadedMicroApps
       } = this.$data
+      const appConfig = microApps.find(app => app.name === appName)
 
-      // 判断是否在加载列表
-      if (appName && microApps.includes(appName)) {
-        const appConfig = apps.find(app => app.name === appName)
-
-        /**
-         * 子应用切换时，销毁应用
-         * 如不希望每次都重新加载子应用，可以注释当前代码
-         */
-        if (Object.keys(loadedMicroApps).includes(appName) && activeApp !== appName) {
-          microApps.includes(activeApp) && loadedMicroApps[activeApp]
-            .unmount()
-            .then(() => {
-              delete loadedMicroApps[activeApp]
-            })
-        }
-
-        if (!Object.keys(loadedMicroApps).includes(appName)) {
-          loadedMicroApps[appName] = loadMicroApp({
-            ...appConfig,
-            container: `#${appName}-view-box`,
-            props
-          })
-        }
+      if (!loadedMicroApps[appName] && appConfig) {
+        loadedMicroApps[appName] = loadMicroApp({
+          container: `#${appName}-view-box`,
+          props: microAppsProps,
+          ...appConfig
+        })
       }
 
-      this.activeApp = appName
+      /**
+       * 子应用切换时，销毁应用
+       * 如不希望每次都重新加载子应用，可以注释当前代码
+       */
+      if (loadedMicroApps[appName]) {
+        loadedMicroApps[appName].mount()
+      }
+
+      if (loadedMicroApps[lastAppName]) {
+        loadedMicroApps[lastAppName].unmount()
+      }
     }
   }
 }

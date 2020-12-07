@@ -4,14 +4,14 @@
       <router-link :to="{ name: 'index' }" tag="button">首页</router-link>
       <router-link :to="{ name: 'one' }" tag="button">子应用 一</router-link>
       <router-link :to="{ name: 'two' }" tag="button">子应用 二</router-link>
-      <span>当前应用：{{ activeApp }}</span>
+      <span>当前应用：{{ $route.meta.name }}</span>
     </div>
 
     <main>
-      <template v-for="(appName, index) in microApps">
+      <template v-for="(microApp, index) in microApps">
         <section
-          v-show="$route.meta.name === appName"
-          :id="`${appName}-view-box`"
+          v-show="$route.meta.name === microApp.name"
+          :id="`${microApp.name}-view-box`"
           :key="index"
         />
       </template>
