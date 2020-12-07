@@ -48,16 +48,14 @@ const appsMixin = {
           props: microAppsProps,
           ...appConfig
         })
+      } else if (loadedMicroApps[appName]) {
+        loadedMicroApps[appName].mount()
       }
 
       /**
        * 子应用切换时，销毁应用
        * 如不希望每次都重新加载子应用，可以注释当前代码
        */
-      if (loadedMicroApps[appName]) {
-        loadedMicroApps[appName].mount()
-      }
-
       if (loadedMicroApps[lastAppName]) {
         loadedMicroApps[lastAppName].unmount()
       }
