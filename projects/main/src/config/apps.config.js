@@ -43,14 +43,14 @@ const appsMixin = {
       } = this.$data
       const appConfig = microApps.find(app => app.name === appName)
 
-      if (!loadedMicroApps[appName] && appConfig) {
+      if (loadedMicroApps[appName]) {
+        loadedMicroApps[appName].mount()
+      } else if (appConfig) {
         loadedMicroApps[appName] = loadMicroApp({
           container: `#${appName}-view-box`,
           props: microAppsProps,
           ...appConfig
         })
-      } else if (loadedMicroApps[appName]) {
-        loadedMicroApps[appName].mount()
       }
 
       /**
