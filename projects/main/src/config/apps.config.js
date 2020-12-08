@@ -20,9 +20,9 @@ const appsRoutes = apps.map(app => {
     name,
     path: name,
     // IF microApp's router mode is history
-    children: [{ path: '*', meta: { name } }]
+    children: [{ path: '*', meta: { name } }],
     // ELSE can only use meta: { name }
-    // meta: { name }
+    meta: { name }
   }
 })
 
