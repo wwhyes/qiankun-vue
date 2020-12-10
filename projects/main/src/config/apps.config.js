@@ -43,9 +43,7 @@ const appsMixin = {
       } = this.$data
       const appConfig = microApps.find(app => app.name === appName)
 
-      if (loadedMicroApps[appName]) {
-        loadedMicroApps[appName].mount()
-      } else if (appConfig) {
+      if (!loadedMicroApps[appName] && appConfig) {
         loadedMicroApps[appName] = loadMicroApp({
           container: `#${appName}-view-box`,
           props: microAppsProps,
@@ -54,12 +52,11 @@ const appsMixin = {
       }
 
       /**
-       * 子应用切换时，销毁应用
+       * 子应用切换时，重新加载及销毁应用
        * 如不希望每次都重新加载子应用，可以注释当前代码
        */
-      if (loadedMicroApps[lastAppName]) {
-        loadedMicroApps[lastAppName].unmount()
-      }
+      loadedMicroApps[appName]?.mount()
+      loadedMicroApps[lastAppName]?.unmount()
     }
   }
 }

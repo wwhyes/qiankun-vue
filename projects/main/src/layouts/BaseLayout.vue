@@ -36,6 +36,10 @@ export default {
       handler: 'loadMicroApp',
       immediate: true
     }
+  },
+  mounted () {
+    var a = { name: 'xiaomin' }
+    console.log(a?.name)
   }
 }
 </script>
