@@ -11,7 +11,7 @@ const apps = [
   }
 ]
 
-const defaultApp = 'one'
+const defaultApp = apps[0]
 
 const appsRoutes = apps.map(app => {
   const { name } = app

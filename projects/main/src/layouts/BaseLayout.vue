@@ -8,6 +8,10 @@
     </div>
 
     <main>
+      <!-- 正常访问 -->
+      <route-view />
+
+      <!-- 子应用容器 -->
       <template v-for="(microApp, index) in microApps">
         <section
           v-show="$route.meta.name === microApp.name"
@@ -15,18 +19,17 @@
           :key="index"
         />
       </template>
-      <route-view />
     </main>
   </div>
 </template>
 
 <script>
+import RouteView from '~common/layouts/RouteView.vue'
 import { appsMixin } from '@/config/apps.config'
-import RouteView from '../../../../common/layouts/RouteView.vue'
 
 export default {
-  components: { RouteView },
   name: 'BaseLayout',
+  components: { RouteView },
   mixins: [appsMixin],
   watch: {
     '$route.meta.name': {

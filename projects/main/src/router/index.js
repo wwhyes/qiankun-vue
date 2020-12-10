@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { BaseLayout } from '@/layouts'
-import { appsRoutes } from '@/config/apps.config'
-import Index from '@/views/Index'
+import { constantRouterMap } from '../config/router.config'
 
 // hack router push callback
 const originalPush = VueRouter.prototype.push
@@ -13,25 +11,9 @@ VueRouter.prototype.push = function push (location, onResolve, onReject) {
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    component: BaseLayout,
-    children: [
-      {
-        path: '/',
-        name: 'index',
-        component: Index,
-        meta: { name: '首页' }
-      },
-      ...appsRoutes
-    ]
-  }
-]
-
 const router = new VueRouter({
   mode: 'history',
-  routes
+  routes: constantRouterMap
 })
 
 export default router
