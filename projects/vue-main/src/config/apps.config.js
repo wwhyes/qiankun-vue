@@ -2,12 +2,16 @@ import { loadMicroApp } from 'qiankun'
 
 const apps = [
   {
-    name: 'one',
+    name: 'vue-hash',
     entry: process.env.VUE_APP_ONE_ENTRY
   },
   {
-    name: 'two',
+    name: 'vue-history-cdn',
     entry: process.env.VUE_APP_TWO_ENTRY
+  },
+  {
+    name: 'vue-custom',
+    entry: process.env.VUE_APP_THR_ENTRY
   }
 ]
 
@@ -30,7 +34,6 @@ const appsMixin = {
   data () {
     return {
       microApps: apps,
-      microAppsProps: {},
       loadedMicroApps: {}
     }
   },
@@ -38,15 +41,20 @@ const appsMixin = {
     loadMicroApp (appName, lastAppName) {
       const {
         microApps,
-        microAppsProps,
         loadedMicroApps
       } = this.$data
       const appConfig = microApps.find(app => app.name === appName)
+      const appProps = {
+        router: {
+          mode: 'history',
+          base: `/${appName}`
+        }
+      }
 
       if (!loadedMicroApps[appName] && appConfig) {
         loadedMicroApps[appName] = loadMicroApp({
           container: `#${appName}-view-box`,
-          props: microAppsProps,
+          props: appProps,
           ...appConfig
         })
       }

@@ -10,10 +10,9 @@ let router = null
 let instance = null
 
 function render (props = {}) {
-  const { container } = props
+  const { container, router: routerConfig } = props
   router = new VueRouter({
-    mode: 'history',
-    base: window.__POWERED_BY_QIANKUN__ ? '/vue-history-cdn' : '/',
+    ...routerConfig,
     routes
   })
 
@@ -21,7 +20,7 @@ function render (props = {}) {
     router,
     store,
     render: h => h(App)
-  }).$mount(container ? container.querySelector('#vue-history-cdn') : '#vue-history-cdn')
+  }).$mount(container ? container.querySelector('#vue-custom-router') : '#vue-custom-router')
 }
 
 if (window.__POWERED_BY_QIANKUN__) {
@@ -39,7 +38,7 @@ export async function bootstrap () {
 
 export async function mount (props) {
   console.log('props from main app', props)
-  render()
+  render(props)
 }
 
 export async function unmount () {

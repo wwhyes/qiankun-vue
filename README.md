@@ -28,16 +28,18 @@ $ npm run projects:build
 
     root/
       common/
-        components/      公用组件
+        components/        公用组件
         layouts/
-      dist/              打包后的目录
+      dist/                打包后的目录
+        vue-custom-router/
         vue-hash/
         vue-history-cdn/
         vue-main/
       projects/
-        vue-hash/        子应用 -- hash模式
-        vue-history-cdn/ 子应用 -- history模式 + cdn加速
-        vue-main/        基座 -- qiankun
+        vue-custom-router/ 子应用 -- router模式可由主应用配置
+        vue-hash/          子应用 -- hash模式
+        vue-history-cdn/   子应用 -- history模式 + cdn加速
+        vue-main/          主应用 -- qiankun
       package.json
 
 ## 其他

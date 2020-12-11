@@ -10,7 +10,7 @@ const vueConfig = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  outputDir: resolve('../../dist/vue-hash'),
+  outputDir: resolve(`../../dist/${name}`),
   assetsDir: 'static',
   filenameHashing: true,
   // tweak internal webpack configuration.

@@ -1,22 +1,7 @@
 const path = require('path')
 const { name } = require('./package')
-const assetsCDN = {
-  externals: {
-    vue: 'Vue',
-    'vue-router': 'VueRouter',
-    vuex: 'Vuex',
-    axios: 'axios'
-  },
-  css: [],
-  js: [
-    'https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js',
-    'https://cdn.jsdelivr.net/npm/vue-router@3.1.2/dist/vue-router.min.js',
-    'https://cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js',
-    'https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js'
-  ]
-}
 const resolve = dir => path.join(__dirname, dir)
-const port = 9002 // dev port
+const port = 9003 // dev port
 const vueConfig = {
   /**
    * You will need to set publicPath if you plan to deploy your site under a sub path,
@@ -56,14 +41,7 @@ const vueConfig = {
       library: `${name}-[name]`,
       libraryTarget: 'umd',
       jsonpFunction: `webpackJsonp_${name}`
-    },
-    externals: assetsCDN.externals
-  },
-  chainWebpack: config => {
-    config.plugin('html').tap(args => {
-      args[0].cdn = assetsCDN
-      return args
-    })
+    }
   }
 }
 

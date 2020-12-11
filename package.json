@@ -12,7 +12,9 @@
     "start:vue-hash": "cd projects/vue-hash && npm run start",
     "build:vue-hash": "cd projects/vue-hash && npm run build",
     "start:vue-history-cdn": "cd projects/vue-history-cdn && npm run start",
-    "build:vue-history-cdn": "cd projects/vue-history-cdn && npm run build"
+    "build:vue-history-cdn": "cd projects/vue-history-cdn && npm run build",
+    "start:vue-custom-router": "cd projects/vue-custom-router && npm run start",
+    "build:vue-custom-router": "cd projects/vue-custom-router && npm run build"
   },
   "repository": {
     "type": "git",

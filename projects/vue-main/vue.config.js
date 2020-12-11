@@ -1,8 +1,9 @@
 const path = require('path')
+const { name } = require('./package')
 const resolve = dir => path.join(__dirname, dir)
 
 const vueConfig = {
-  outputDir: resolve('../../dist/vue-main'),
+  outputDir: resolve(`../../dist/${name}`),
   configureWebpack: {
     resolve: {
       alias: {
