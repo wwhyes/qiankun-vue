@@ -7,7 +7,6 @@
 - 相同VUE配置环境开发环境
 - 切换应用后不需要重新加载应用
 
-----
 
 ## 安装
 
@@ -16,6 +15,9 @@ $ npm install
 $ npm run projects:install
 $ npm run projects:start
 ```
+
+## 主应用地址
+    http://localhost:8090
 
 ## 打包
 ```shell
