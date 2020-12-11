@@ -15,6 +15,11 @@ $ npm run projects:install
 $ npm run projects:start
 ```
 
+## 打包
+```shell
+$ npm run projects:build
+```
+
 ## 目录说明
 
     root/

@@ -5,10 +5,14 @@
   "scripts": {
     "projects:install": "npm-run-all --serial install:*",
     "projects:start": "npm-run-all --parallel start:*",
+    "projects:build": "npm-run-all --serial build:*",
     "install:main": "cd projects/main && npm i",
     "start:main": "cd projects/main && npm run start",
+    "build:main": "cd projects/main && npm run build",
     "start:one": "cd projects/vue-one && npm run start",
-    "start:two": "cd projects/vue-two && npm run start"
+    "build:one": "cd projects/vue-one && npm run build",
+    "start:two": "cd projects/vue-two && npm run start",
+    "build:two": "cd projects/vue-two && npm run build"
   },
   "repository": {
     "type": "git",
