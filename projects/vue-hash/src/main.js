@@ -20,7 +20,7 @@ function render (props = {}) {
     router,
     store,
     render: h => h(App)
-  }).$mount(container ? container.querySelector('#vue-two') : '#vue-two')
+  }).$mount(container ? container.querySelector('#vue-hash') : '#vue-hash')
 }
 
 if (window.__POWERED_BY_QIANKUN__) {
