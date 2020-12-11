@@ -24,12 +24,16 @@ $ npm run projects:build
 
     root/
       common/
-        components/    公用组件
+        components/      公用组件
         layouts/
+      dist/              打包后的目录
+        vue-hash/
+        vue-history-cdn/
+        vue-main/
       projects/
-        main/          基座 -- qiankun
-        vue-one/       子应用1
-        vue-two/       子应用2
+        vue-hash/        子应用 -- hash模式
+        vue-history-cdn/ 子应用 -- history模式 + cdn加速
+        vue-main/        基座 -- qiankun
       package.json
 
 ## 其他
