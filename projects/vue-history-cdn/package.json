@@ -1,10 +1,7 @@
 {
   "name": "vue-history-cdn",
-  "version": "0.1.0",
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build"
-  },
-  "dependencies": {},
-  "devDependencies": {}
+  }
 }
