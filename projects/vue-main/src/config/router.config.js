@@ -13,7 +13,7 @@ export const constantRouterMap = [
     component: BaseLayout,
     children: [
       {
-        path: '/',
+        path: '',
         name: 'index',
         component: Index,
         meta: { name: '首页' }

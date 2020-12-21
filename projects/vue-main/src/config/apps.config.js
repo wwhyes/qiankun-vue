@@ -23,10 +23,9 @@ const appsRoutes = apps.map(app => {
   return {
     name,
     path: name,
+    meta: { name },
     // IF microApp's router mode is history
-    children: [{ path: '*', meta: { name } }],
-    // ELSE can only use meta: { name }
-    meta: { name }
+    children: [{ path: '*', meta: { name } }]
   }
 })
 
@@ -63,8 +62,16 @@ const appsMixin = {
        * 子应用切换时，重新加载及销毁应用
        * 如不希望每次都重新加载子应用，可以注释当前代码
        */
-      loadedMicroApps[appName]?.mount()
-      loadedMicroApps[lastAppName]?.unmount()
+      this.mircoAppMount(appName)
+      this.mircoAppUnmount(lastAppName)
+    },
+    mircoAppMount (appName) {
+      this.loadedMicroApps[appName]?.mount()
+    },
+    mircoAppUnmount (appName) {
+      if (this.loadedMicroApps[appName]?.getStatus() === 'MOUNTED') {
+        this.loadedMicroApps[appName].unmount()
+      }
     }
   }
 }
