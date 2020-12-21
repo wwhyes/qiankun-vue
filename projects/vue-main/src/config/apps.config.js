@@ -50,6 +50,12 @@ const appsMixin = {
         }
       }
 
+      // 子应用切换时，重新加载及销毁应用
+      // 如不希望每次都重新加载子应用，可以注释当前代码
+      this.mircoAppMount(appName)
+      this.mircoAppUnmount(lastAppName)
+
+      // 初次加载子应用
       if (!loadedMicroApps[appName] && appConfig) {
         loadedMicroApps[appName] = loadMicroApp({
           container: `#${appName}-view-box`,
@@ -57,13 +63,6 @@ const appsMixin = {
           ...appConfig
         })
       }
-
-      /**
-       * 子应用切换时，重新加载及销毁应用
-       * 如不希望每次都重新加载子应用，可以注释当前代码
-       */
-      this.mircoAppMount(appName)
-      this.mircoAppUnmount(lastAppName)
     },
     mircoAppMount (appName) {
       this.loadedMicroApps[appName]?.mount()
