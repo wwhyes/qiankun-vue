@@ -40,8 +40,14 @@ const appsMixin = {
 
       // 子应用切换时，重新加载及销毁应用
       // 如不希望每次都重新加载子应用，可以注释当前代码
-      this.mircoAppMount(appName)
-      this.mircoAppUnmount(lastAppName)
+      appName && this.mircoAppMount(appName)
+      lastAppName && this.mircoAppUnmount(lastAppName)
+
+      // 如果匹配到子项目，跳转404页面
+      if (appName && !appConfig) {
+        this.$router.push({ name: 'Entry404' })
+        return
+      }
 
       // 初次加载子应用
       if (!loadedMicroApps[appName] && appConfig) {

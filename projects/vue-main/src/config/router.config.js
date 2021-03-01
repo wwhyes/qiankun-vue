@@ -1,5 +1,6 @@
 import { BaseLayout } from '@/layouts'
 import Index from '@/views/Index'
+import Entry404 from '@/views/404'
 
 /**
  * 基础路由
@@ -14,8 +15,12 @@ export const constantRouterMap = [
       {
         path: '',
         name: 'index',
-        component: Index,
-        meta: { name: '首页' }
+        component: Index
+      },
+      {
+        path: '/404',
+        name: 'Entry404',
+        component: Entry404
       },
       {
         path: '/entry/:name',
