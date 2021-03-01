@@ -5,7 +5,7 @@
       <router-link
         v-for="(microApp, index) in microApps"
         :key="index"
-        :to="{ name: microApp.name }"
+        :to="{ path: `/entry/${microApp.name}` }"
         tag="button"
       >应用{{ microApp.name }}</router-link>
       <span>当前应用：{{ $route.meta.name }}</span>
@@ -18,7 +18,7 @@
       <!-- 子应用容器 -->
       <template v-for="(microApp, index) in microApps">
         <section
-          v-show="$route.meta.name === microApp.name"
+          v-show="$route.params.name === microApp.name"
           :id="`${microApp.name}-view-box`"
           :key="index"
         />
@@ -36,7 +36,7 @@ export default {
   components: { RouteView },
   mixins: [appsMixin],
   watch: {
-    '$route.meta.name': {
+    '$route.params.name': {
       handler: 'loadMicroApp',
       immediate: true
     }

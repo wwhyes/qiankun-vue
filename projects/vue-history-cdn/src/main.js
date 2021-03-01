@@ -13,7 +13,7 @@ function render (props = {}) {
   const { container } = props
   router = new VueRouter({
     mode: 'history',
-    base: window.__POWERED_BY_QIANKUN__ ? '/vue-history-cdn' : '/',
+    base: window.__POWERED_BY_QIANKUN__ ? '/entry/vue-history-cdn' : '/',
     routes
   })
 

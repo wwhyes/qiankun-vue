@@ -17,18 +17,6 @@ const apps = [
 
 const defaultApp = apps[0]
 
-const appsRoutes = apps.map(app => {
-  const { name } = app
-
-  return {
-    name,
-    path: name,
-    meta: { name },
-    // IF microApp's router mode is history
-    children: [{ path: '*', meta: { name } }]
-  }
-})
-
 const appsMixin = {
   data () {
     return {
@@ -46,7 +34,7 @@ const appsMixin = {
       const appProps = {
         router: {
           mode: 'history',
-          base: `/${appName}`
+          base: `/entry/${appName}`
         }
       }
 
@@ -76,4 +64,4 @@ const appsMixin = {
 }
 
 export default apps
-export { defaultApp, appsRoutes, appsMixin }
+export { defaultApp, appsMixin }

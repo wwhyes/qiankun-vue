@@ -1,5 +1,4 @@
 import { BaseLayout } from '@/layouts'
-import { appsRoutes } from '@/config/apps.config'
 import Index from '@/views/Index'
 
 /**
@@ -18,7 +17,12 @@ export const constantRouterMap = [
         component: Index,
         meta: { name: '首页' }
       },
-      ...appsRoutes
+      {
+        path: '/entry/:name',
+        name: 'entry',
+        // IF microApp's router mode is history
+        children: [{ path: '*' }]
+      }
     ]
   }
 ]
